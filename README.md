@@ -1,62 +1,72 @@
-# Midterm-Project
-Nathan David & Sarabjit Matharu
+# Midterm-Project: US Domestic Flights from 2000 to 2009
+Completed by Nathan David & Sarabjit Matharu
 
 ## Project/Goals
-Our data set contained monthly domestic flight records from 2000 to 2009. Parameters used are Origin, Destination, Origin City, Destination City, Passengers, Seats, Flights, Distance, Fly Date, Origin Population, Destination Population. Goal of this project is to find out patterns of flights in between various places. Which years and which regions we have more flights in & how different factors are contributing number of flights.
+This project aims to conduct a comprehensive examination and analysis of domestic flights within the United States from 2000 to 2009. The dataset was obtained from open source (Kaggle.com). To accomplish this objective, we have formulated specific research inquiries aimed at understanding the influence of various factors on domestic flight data during this period:
+
+* Is there a correlation relationship between the population size of the departure city and the number of passengers on flights during this timeframe? 
+* Do cities with larger populations tend to exhibit higher passenger counts on flights? 
+* Can we pinpoint regional disparities in flight patterns for journeys from the West to the Midwest and other regions, as opposed to flights originating from other areas? 
+* How do differences in population between the origin and destination cities contribute to these variations?
+
 
 ## Process
 
-The very first step is to understand the data set. These are different parameters used in this project as below : 
+### 1. Planning Process
+* Define the problem statement for the project.
+* Conduct a thorough search and exploration of data to address the defined problem and research questions.
+* Establish the project repository on GitHub and configure folders and files accordingly.
 
-Origin - String - Three letter airport code of the origin airport
-Destination - String - Three letter airport code of the destination airport
-Origin City - String - Origin city name
-Destination City - String - Destination city name
-Passengers - Integer - Number of passengers transported from origin to destination
-Seats - Integer - Number of seats available on flights from origin to destination
-Flights - Integer - Number of flights between origin and destination (multiple records for one month, many with flights > 1)
-Distance - Integer - Distance (to nearest mile) flown between origin and destination
-Fly Date - Integer - The date (yyyymm) of flight
-Origin Population - Integer - Origin city's population.
-Destination Population - Integer - Destination City's population.
+### 2. Data Cleaning and Transformation in Python:
+In the data preparation phase, we load and evaluate the CSV data file containing US Domestic flight data from 2000 to 2009. After acquiring the data, we conduct a comprehensive data cleaning and transformation process to ensure data integrity. This process includes addressing inconsistencies, managing missing values, detecting and resolving duplicates, and standardizing data formats.
+Note that all the data used for this project are saved in the 'data' folder.
+* flights.csv - this is the row dataset.
+* flights_clean.csv - the clean and transformed dataset fit for purpose.
+* flights_reg.csv - clean dataset plus three additional columns (Years, Origin Region, and Destination Region)
 
-Cleaning includes removing any duplicate values from this data set. As there is no column that can be used as a unique key for this data set so we created a new column named ID by combining following columns - Origin City + Destination City + Passengers + Fly Date. 
 
-in this data set We have 591438 rows(including Duplicates) & 14 columns. Then we checked information of dataframe to view column names & rows of data set. A check is also performed to see if there is any null or NaN value present within dataset.
+### 3. Conducting Exploratory Data Analysis (EDA):
+During this phase, we delve into the data, employing analytical techniques and creating visualizations to reveal valuable insights, uncover underlying patterns, and pinpoint emerging trends. This thorough analysis plays a pivotal role in comprehensively understanding the dataset's unique characteristics.
 
-Then a duplicate check was performed. We had 10375 duplicate rows. We have 581063 rows after cleaning up.
+### 4. Model Building
+In this stage, we will construct linear and logistic regression models to forecast the passenger count based on the number of seats available on a flight and the total number of flights in a given month.
 
-After cleaning of data was done, next step was to import all libraries. Then create a dataframe to see all the columns & a glimpse of rows. 
+### 5. Build a Dashboard
+Develop an interactive Tableau dashboard, the Air Traffic Passenger of US Domestic Flight Dashboard in the workbook (this can be found in the data folder), that answers questions and showcases insights. And then the flight story that tells the story of this project. See the presentation/dashboard pdf in the data folder.
+The following dataset files (saved in the 'data' folder) were used for this process:
+* flights_region.csv - modified for Tableau dashboard development
+* airports.csv - additional data with airport ID, latitude, and longitude for Tableau dashboard development.
+
 
 ## Results
+Efficiently obtained the data and conducted data cleaning and transformation to align it with the project's objectives. Generated diverse visualizations to delve into flight attributes and patterns, explore correlations, and extract valuable insights (see the domestic_flight_EDA file in the notebook folder for details). Designed an interactive Tableau dashboard that provides answers to questions and presents vital insights for enhanced data exploration.
 
-Below are some of the findings from this dataset :
-        Strong Positive Correlation: Passengers and Seats, Passengers and Flights
-        Strong Negative Correlation: Passengers and Fly Date, Seats and Fly Date, Flights and Fly Date, Distance and Fly Date
-        Most visited destination is Chicago followed by Atlanta & Dallas.
-        We have most number of flights in 2004 followed by 2007.
-        When looking as regions we have most number of flights from Midwest to Midwest. A higher volume of flights connects cities within the Midwest, Southeast, Southwest, and West regions. However, in the case of the Northeast region, there is a higher volume of flights connecting it to the Midwest region rather than within the Northeast itself.
-        There are less travelling in within the West region and to other regions.
+### Answer to Research Questions
+1. The correlation heatmap for US Domestic Flights illustrates the following significant correlations:
+* Strong Positive Correlations: Passengers and Seats, Passengers and Flights
+* Strong Negative Correlations: Passengers and Fly Date, Seats and Fly Date, Flights and Fly Date, Distance and Fly Date
+In addition, we observe weaker or negative correlations between the population size of the departure city and the number of passengers on flights, indicating that population size alone may not be a strong predictor of passenger numbers. These findings provide valuable insights into the dataset's relationships, encompassing solid and weak correlations.
+
+2. Our analysis has pinpointed Chicago as the most frequently visited destination, closely followed by Atlanta and Dallas.
+
+3. Regarding regional flight patterns, most flights are within the Midwest, with a substantial number connecting cities in the Midwest, Southeast, Southwest, and West regions. However, an interesting observation is that the Northeast region primarily links to the Midwest rather than having a significant number of intra-Northeast flights. Conversely, there is relatively less inter-regional travel within the West region compared to connections with other areas.
 
 ### Regression Model Results
+1. Regression Model: Please refer to the 'model_building.ipynb' notebook in the designated notebook folder for comprehensive details. The results reveal that both 'Seats' and 'Flights,' as predictors for forecasting passenger numbers, exhibit exceptionally low p-values, indicating their statistical significance as predictive factors. The model effectively accounts for a substantial portion of the variance in 'Passengers,' with 'Seats' and 'Flights' proving statistically significant predictors.
 
-    Regression Model:
-    Both 'Seats' and 'Flights' have very low p-values (close to zero), indicating that they are statistically significant predictors. Overall, the model explains a substantial portion of the variance in 'Passengers,' and both 'Seats' and 'Flights' are statistically significant predictors. However, some aspects of model fit and distribution of residuals may need further investigation, particularly the non-normality of residuals indicated by the Jarque-Bera test.
-
-    Classification Model:
-    The classification model has a high accuracy of approximately 93.32%. It performs well in precision, recall, and F1-score for both classes, indicating that it can effectively distinguish between them (0 and 1). The classification report provides a detailed breakdown of the model's performance for each class.
+2. Classification Model: The classification model has a high accuracy of approximately 93.32%. It performs well in precision, recall, and F1-score for both classes, indicating that it can effectively distinguish between them (0 and 1). The classification report provides a detailed breakdown of the model's performance for each class, see the 'model_building.ipynb' notebook.
 
 ### Dashboard in Tableau
+This dashboard includes five main visualizations: 'Monthly Traffic Volume,' 'Top 10 Cumulative Passengers from Origin Airport,' 'Top 10 Cumulative Passengers of Destination Airport,' 'Regional Flight Patterns,' and 'Domestic Flights Path Map.'
 
-    A dashboard is created for US Domestic Flights. 
-        1. There is Regional Flight Pattern on the dashboard to show flight patterns in diffrent regions.
-        2. Top 10 cumulative passengers from Origin Airport
-        3. Top 10 cumulative passengers from Destination Airport
-        4. We have a flydate filter
-        5. Different regions & Airports are shows with diffrent colors.
+To navigate the dashboard, you can specify the desired year (ranging from 2000 to 2009) using the "Year of Fly Date" filter. This selection will update all the above visuals to reflect the chosen year. Additionally, you can refine your exploration by selecting the three-letter code of the origin airport (e.g., 'HOU' for Houston) using the "Origin Airport" filter. This filter narrows down the monthly passenger traffic volume and displays flight paths to different destination airports associated with the selected origin airport.
+
+Furthermore, you can utilize the "Origin Region" filter with the "Year of Fly Date" filter to examine the results of Regional Flight Patterns for both the origin and destination regions, facilitating a comprehensive analysis of flight patterns based on your criteria.
+
 
 ## Challenges 
-    This data set originally contained data from 1999 to 2001. It was very challenging to upload dataset to GitHub So we decided to study data from 2000 to 2009. There was no unique key to work with so combination of columns were used to make a unique ID.
+The original dataset encompassed information spanning from 1999 to 2001. Uploading the entire dataset to GitHub posed significant challenges. Consequently, we focused our study on the data from 2000 to 2009. Without a unique identifier, we resorted to creating a unique ID by combining various columns.
+
 
 ## Future Goals
-    If we have more time we will explore more in delpth flight pattrens. And also can extend our data base to include data from 1999 to 2000.
+Given additional time, we plan to conduct a more thorough investigation into flight patterns. Additionally, we may consider expanding our database to incorporate data from 1999 to 2000.

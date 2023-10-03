@@ -1,5 +1,5 @@
 # Midterm-Project: US Domestic Flights from 2000 to 2009
-Completed by Nathan David & Sarabjit Matharu
+#### Completed by Nathan David & Sarabjit Matharu
 
 ## Project/Goals
 This project aims to conduct a comprehensive examination and analysis of domestic flights within the United States from 2000 to 2009. The dataset was obtained from open source (Kaggle.com). To accomplish this objective, we have formulated specific research inquiries aimed at understanding the influence of various factors on domestic flight data during this period:
@@ -42,9 +42,10 @@ The following dataset files (saved in the 'data' folder) were used for this proc
 Efficiently obtained the data and conducted data cleaning and transformation to align it with the project's objectives. Generated diverse visualizations to delve into flight attributes and patterns, explore correlations, and extract valuable insights (see the domestic_flight_EDA file in the notebook folder for details). Designed an interactive Tableau dashboard that provides answers to questions and presents vital insights for enhanced data exploration.
 
 ### Answer to Research Questions
-1. The correlation heatmap for US Domestic Flights illustrates the following significant correlations:
-* Strong Positive Correlations: Passengers and Seats, Passengers and Flights
-* Strong Negative Correlations: Passengers and Fly Date, Seats and Fly Date, Flights and Fly Date, Distance and Fly Date
+1. The correlation heatmap for US Domestic Flights illustrates the following significant correlations: 
+    * Strong Positive Correlations: Passengers and Seats, Passengers and Flights
+    * Strong Negative Correlations: Passengers and Fly Date, Seats and Fly Date, Flights and Fly Date, Distance and Fly Date.
+
 In addition, we observe weaker or negative correlations between the population size of the departure city and the number of passengers on flights, indicating that population size alone may not be a strong predictor of passenger numbers. These findings provide valuable insights into the dataset's relationships, encompassing solid and weak correlations.
 
 2. Our analysis has pinpointed Chicago as the most frequently visited destination, closely followed by Atlanta and Dallas.
